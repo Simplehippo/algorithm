@@ -28,7 +28,6 @@ public class QuickSort {
         // 优化二: 三路快排
         quickSort3(arr, 0, arr.length);
 
-
         long endTime = System.currentTimeMillis();
         // cpu: intel i7 4710MQ
         // 内存: 8G
@@ -37,8 +36,8 @@ public class QuickSort {
         //         基本         优化一        优化二        优化三
         // 十万    0.02s        0.02s        0.025s        0.02s
         // 一百万  0.14s        0.14s        0.15s         0.05s
-        // 一千万  1.5s/溢出     1.3s/溢出     1.6s         0.1s-0.3s
-        // 一亿    溢出          溢出         溢出          2s-4s
+        // 一千万  1.5s/溢出     1.3s/溢出     1.6s         1.9s
+        // 一亿    溢出          溢出         溢出          22s-24s
         //************************************************************
         System.out.println((endTime - startTime) / 1000.0 + "s");
 
@@ -162,8 +161,8 @@ public class QuickSort {
         int j = r - 1;
 
         while(i < j) {
-            while(i < r && arr[i] < v) i++;
-            while(j > l && arr[j] > v) j--;
+            while(i < j && arr[i] < v) i++;
+            while(i < j && arr[j] > v) j--;
             if(i >= j) {
                 break;
             }
